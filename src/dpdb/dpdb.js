@@ -13,51 +13,21 @@
  * limitations under the License.
  */
 
-// Offline cache of the DPDB, to be used until we load the online one (and
-// as a fallback in case we can't load the online one).
+// Offline cache of the DPDB, to be used instead of the online one
 var DPDB_CACHE = require('./dpdb-cache.js');
 var Util = require('../util.js');
-
-// Online DPDB URL.
-var ONLINE_DPDB_URL = require('./dpdb.json');
 
 /**
  * Calculates device parameters based on the DPDB (Device Parameter Database).
  * Initially, uses the cached DPDB values.
  *
- * If fetchOnline == true, then this object tries to fetch the online version
- * of the DPDB and updates the device info if a better match is found.
- * Calls the onDeviceParamsUpdated callback when there is an update to the
- * device information.
  */
-function Dpdb(fetchOnline, onDeviceParamsUpdated) {
+function Dpdb() {
   // Start with the offline DPDB cache while we are loading the real one.
   this.dpdb = DPDB_CACHE;
 
   // Calculate device params based on the offline version of the DPDB.
   this.recalculateDeviceParams_();
-
-  // XHR to fetch online DPDB file, if requested.
-  if (fetchOnline) {
-    // Set the callback.
-    this.onDeviceParamsUpdated = onDeviceParamsUpdated;
-
-    var xhr = new XMLHttpRequest();
-    var obj = this;
-    xhr.open('GET', ONLINE_DPDB_URL, true);
-    xhr.addEventListener('load', function() {
-      obj.loading = false;
-      if (xhr.status >= 200 && xhr.status <= 299) {
-        // Success.
-        obj.dpdb = JSON.parse(xhr.response);
-        obj.recalculateDeviceParams_();
-      } else {
-        // Error loading the DPDB.
-        console.error('Error loading online DPDB!');
-      }
-    });
-    xhr.send();
-  }
 }
 
 // Returns the current device parameters.

@@ -49,18 +49,7 @@ var DPDB_CACHE = {
       { "mdmh": "Google//Pixel XL/" },
       { "ua": "Pixel XL" }
     ],
-    "dpi": [537.9, 533],
-    "bw": 3,
-    "ac": 1000
-  },
-
-  {
-    "type": "android",
-    "rules": [
-      { "mdmh": "Google//Pixel/" },
-      { "ua": "Pixel" }
-    ],
-    "dpi": [432.6, 436.7],
+    "dpi": [ 537.9, 533 ],
     "bw": 3,
     "ac": 1000
   },
@@ -201,7 +190,7 @@ var DPDB_CACHE = {
     "type": "android",
     "rules": [
       { "mdmh": "LGE/*/Nexus 5/*" },
-      { "ua": "Nexus 5 " }
+      { "ua": "Nexus 5 B" }
     ],
     "dpi": [ 442.4, 444.8 ],
     "bw": 3,
@@ -377,7 +366,7 @@ var DPDB_CACHE = {
     "type": "android",
     "rules": [
       { "mdmh": "motorola/*/Nexus 6/*" },
-      { "ua": "Nexus 6 " }
+      { "ua": "Nexus 6 B" }
     ],
     "dpi": [ 494.3, 489.7 ],
     "bw": 3,
@@ -680,7 +669,7 @@ var DPDB_CACHE = {
     "bw": 3,
     "ac": 1000
   },
-    
+
   {
     "type": "android",
     "rules": [
@@ -860,10 +849,21 @@ var DPDB_CACHE = {
   {
     "type": "android",
     "rules": [
+      { "mdmh": "samsung/*/SM-G930F/*" },
+      { "ua": "SM-G930F" }
+    ],
+    "dpi": 576.6,
+    "bw": 3,
+    "ac": 1000
+  },
+
+  {
+    "type": "android",
+    "rules": [
       { "mdmh": "samsung/*/SM-G935F/*" },
       { "ua": "SM-G935F" }
     ],
-    "dpi": 534,
+    "dpi": 533.0,
     "bw": 3,
     "ac": 500
   },
